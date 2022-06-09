@@ -2865,6 +2865,60 @@ def fStudents_advisory(request):
     else:
         return redirect('index')
 
+def fStudents_advisoryChecklist(request):
+    if request.user.is_authenticated and request.user.is_faculty:
+        id= request.user.id
+        f_user = FacultyInfo.objects.get(pk = id)
+        advisory = BlockSection.objects.filter(adviser = f_user)
+        stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory) 
+        try:
+            stud_checklist = crsChecklist.objects.all
+        except crsChecklist.DoesNotExist:
+            stud_checklist = None
+
+        context = {'advisory': advisory, 'stud_advisory': stud_advisory, 'stud_checklist':stud_checklist}
+        return render(request, 'faculty/fStudents_advisoryChecklist.html', context)
+    else:
+        return redirect('index')
+
+def fStudents_viewStudentChecklist(request, stud_id):
+    if request.user.is_authenticated and request.user.is_faculty:
+        fcount=0
+        stud_checklist = crsChecklist.objects.get(studentID_id=stud_id)#
+        if (request.method == 'POST'):
+                stud_checklist.crsApprovedChecklist = request.FILES.get('checkListApproved')
+                if ('feedback' in request.POST):
+                    stud_checklist.comment = request.POST.get('message')
+                stud_checklist.save()
+                status = request.POST.get('slct')
+                if status=='Submitted':
+                    stud_checklist.remarks = "Submitted"
+                    stud_checklist.save()
+                elif status=='Returned':
+                    stud_checklist.remarks = "Returned"
+                    stud_checklist.crsChecklist.delete()
+                    stud_checklist.crsChecklist = None
+                    stud_checklist.checkList.delete()
+                    stud_checklist.checkList = None
+                    stud_checklist.save()
+                    messages.success(request,'File is Returned, No file.')
+                elif status=='Approved':
+                    stud_checklist.remarks = "Approved"
+                    messages.success(request,'File is Approved.')
+                    stud_checklist.save()
+                #messages.success(request,'Feedback is successfully sent!')
+                #return redirect('fHome') 
+
+        """f_user = FacultyInfo.objects.get(pk = id)
+        advisory = BlockSection.objects.filter(adviser = f_user)
+        stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory) 
+        count = stud_advisory.count()"""
+
+        context = {'stud_checklist':stud_checklist, 'fcount':fcount}
+        return render(request, 'faculty/fStudents_viewStudentChecklist.html', context)
+    else:
+        return redirect('index')
+
 def fStudents_viewStudentGrade (request,stud_id):
     semester = '1'
     fcount = 0
@@ -3682,6 +3736,49 @@ def donecrs(request):
                 return redirect('sGradeSubmission3') 
         except ObjectDoesNotExist:
             return redirect('sGradeSubmission1')
+    else:
+        return redirect('index')
+
+def sChecklistSubmission(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        info = StudentInfo.objects.get(studentUser=id)
+        flag = 1
+        if (request.method == 'POST'):
+            checkList= request.FILES.get('checkList')#sa html
+            CrsChecklist= request.FILES.get('crsChecklist')#sa html
+            try:
+                user_checklist = crsChecklist.objects.get(studentID_id=id)
+                if user_checklist.remarks == "Returned":
+                    if (request.method == 'POST'):
+                        user_checklist.checkList = request.FILES.get('checkList')
+                        user_checklist.crsChecklist = request.FILES.get('crsChecklist')
+                        user_checklist.remarks = 'Submitted'
+                        user_checklist.save()
+                        #return redirect('sGradeSubmission3') 
+                else:
+                    messages.error(request,'You have already submitted an application!')
+                    return redirect('sChecklistSubmission')
+                    #return render(request,'student/sClassroom/sGradeSubmission2.html')
+            except ObjectDoesNotExist:
+                student = crsChecklist(studentID=info, checkList=checkList, crsChecklist=CrsChecklist)
+                student.save()
+                return redirect('sChecklistSubmission')
+                #return redirect('sGradeSubmission3')
+        
+        try:
+            approved_file = crsChecklist.objects.get(studentID=id)
+            if approved_file.remarks == "Returned":
+                flag = 1
+            else:
+                flag = 0
+        except crsChecklist.DoesNotExist:
+            approved_file = None
+            flag = 1
+        
+
+        
+        return render(request, 'student/sClassroom/scrsChecklistSubmission.html', {'approved_file': approved_file, 'flag':flag})
     else:
         return redirect('index')
 
@@ -6429,9 +6526,10 @@ def applicant_facultyapplicationform_workexpsheet_submitted(request):
 #--------------------- APPLICANT PROFILE ----------------------------
 
 def TProfile(request):
-    global psw 
     if request.user.is_authenticated and request.user.is_applicant:
-        info = TransfereeApplicant.objects.get(applicant_num = psw)
+        fname = request.user.firstName
+        lname = request.user.lastName
+        info = TransfereeApplicant.objects.get(fname = fname, lname = lname)
         mail = request.user.email
         context = {'info':info,'mail':mail}
         if (request.method == 'POST'):
@@ -6440,62 +6538,70 @@ def TProfile(request):
             NU = request.FILES.get("NU")
             Grade = request.FILES.get("Grade")
             Studyplan = request.FILES.get("studyPlan")
-            if HD != None:
-                info.studentHD = HD
+            if HD != None or GM != None or Studyplan != None or NU != None or Grade != None:
+                if HD != None: 
+                    info.studentHD = HD
+                if GM != None:
+                    info.studentGoodmoral = GM
+                if Studyplan != None:
+                    info.studentStudyplan = Studyplan
+                if NU != None:
+                    info.studentNote = NU
+                if Grade != None:
+                    info.studentGrade = Grade
+                info.remarks = "Submitted"
                 info.save()
-            if GM != None:
-                info.studentGoodmoral = GM
-                info.save()
-            if Studyplan != None:
-                info.studentStudyplan = Studyplan
-                info.save()
-            if NU != None:
-                info.studentNote = NU
-                info.save()
-            if Grade != None:
-                info.studentGrade = Grade
-                info.save()
-            
-            messages.success(request, 'Files submitted successfully.')
+                messages.success(request, 'Files submitted successfully.')
+            else:
+                messages.error(request, "Please upload the respective file being requested.")
         return render(request, 'applicant/profile/TProfile.html', context)
     else:
          return redirect('index')
 def ShProfile(request):
-    global psw 
     if request.user.is_authenticated and request.user.is_applicant:
         mail = request.user.email
-        info = ShifterApplicant.objects.get(applicant_num = psw)
+        fname = request.user.firstName
+        lname = request.user.lastName
+        info = ShifterApplicant.objects.get(fname = fname, lname=lname)
         context = {'info':info,'mail':mail}
         if (request.method == 'POST'):
             Letter = request.FILES.get("LetterofIntentFile")
             Grade = request.FILES.get("GradeScreenshotFile")
             Studyplan = request.FILES.get("studyPlanFile")
             collegeLetter = request.FILES.get("collegeLetter")
-            if Studyplan != None:
-                info.studentStudyplan = Studyplan
+            checklist = request.FILES.get("checklist")
+            if Studyplan != None or Letter != None or Grade != None or collegeLetter != None or checklist != None:    
+                if Studyplan != None:
+                    info.studentStudyplan = Studyplan
+                if Letter != None:
+                    info.studentshifterletter = Letter
+                if Grade != None:
+                    info.studentGrade = Grade
+                if collegeLetter != None:
+                    info.shiftingForm = collegeLetter
+                if checklist != None:
+                    info.Checklist = checklist
+                info.remarks = "Submitted"
                 info.save()
-            if Letter != None:
-                info.studentshifterletter = Letter
-                info.save()
-            if Grade != None:
-                info.studentGrade = Grade
-                info.save()
-            if collegeLetter != None:
-                info.shiftingForm = collegeLetter
-                info.save()
-            messages.success(request, 'Files submitted successfully.')
+                messages.success(request, 'Files submitted successfully.')
+            else:
+                messages.error(request, "Please upload the respective file being requested.")
         return render(request, 'applicant/profile/SProfile.html', context)
     else:
          return redirect('index')
 def FProfile(request):
-    global psw 
     if request.user.is_authenticated and request.user.is_applicant:
-        info = FacultyApplicant.objects.get(applicant_num = psw)
+        fname = request.user.firstName
+        lname = request.user.lastName
+        info = FacultyApplicant.objects.get(firstName = fname, lastName = lname)
         mail = request.user.email
         context = {'info':info, 'mail':mail}
         return render(request, 'applicant/profile/FProfile.html', context)
     else:
          return redirect('index')
+
+
+
 
 
 
