@@ -6436,48 +6436,13 @@ def applicantrequirements(request):
     
 
 def applicant_facultyapplicationform(request):
-    global f_num
+    global f_num, f_mail
     if (request.method == 'POST'):
         applicant_num = app_num(3)
         firstName = request.POST.get("firstName")
         lastName = request.POST.get("lastName")
         middleName = request.POST.get("middleName")
-        firstName = firstName.title()
-        middleName = middleName.title()
-        lastName = lastName.title()
-        try:
-            email = request.POST.get("email")
-            phoneNumber = request.POST.get("phoneNumber")
-            sex = request.POST.get("sex")
-            department = request.POST.get("department")
-            time = request.POST.get("Time")
-            cv1 = request.FILES.get("CV")
-            certificates = request.FILES.get("certificates")
-            credentials = request.FILES.get("credentials")
-            Tor = request.FILES.get("TOR")
-            pds = request.FILES.get("PDS")
-            f_num = applicant_num
-            remarks = "Not Complete"
-            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex= sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num, remarks = remarks)
-            facultyApplicantInfo.save()
-            return redirect('applicant_facultyapplicationform_workexpsheet')
-        except:
-            messages.error(request, 'You have already submitted an application')
-            return render(request,'./applicant/applicant_facultyapplicationform.html')
-    return render(request, './applicant/applicant_facultyapplicationform.html')
-
-
-#--------------------WORK EXPERIENCE SHEET --------------------------
-
-
-def applicant_facultyapplicationform_workexpsheet(request):
-    global f_num, f_mail
-    if (request.method == 'POST'):
-        facultyApplicantInfo = FacultyApplicant.objects.get(applicant_num = f_num)
-        pw = str(f_num)
-        firstName = facultyApplicantInfo.firstName
-        middleName = facultyApplicantInfo.middleName
-        lastName = facultyApplicantInfo.lastName
+        pw = str(applicant_num)
         first = firstName.lower()
         middle = middleName.lower()
         last = lastName.lower()
@@ -6495,26 +6460,26 @@ def applicant_facultyapplicationform_workexpsheet(request):
         log.is_applicant = True
         log.save()
         try:
-            durationwork = request.POST.get("durationwork")
-            positionwork = request.POST.get("position")
-            officeunit = request.POST.get("officeunit")
-            agencyorg = request.POST.get("agencyorg")
-            accomplishments = request.FILES.get("accomplishments")
-            summaryduties = request.FILES.get("summaryduties")
-            facultyApplicantInfo.remarks="Submitted"
-            facultyApplicantInfo.durationwork=durationwork 
-            facultyApplicantInfo.positionwork=positionwork
-            facultyApplicantInfo.officeunit=officeunit
-            facultyApplicantInfo.agencyorg=agencyorg
-            facultyApplicantInfo.accomplishments=accomplishments
-            facultyApplicantInfo.summaryduties=summaryduties
+            email = request.POST.get("email")
+            phoneNumber = request.POST.get("phoneNumber")
+            sex = request.POST.get("sex")
+            department = request.POST.get("department")
+            time = request.POST.get("Time")
+            cv1 = request.FILES.get("CV")
+            certificates = request.FILES.get("certificates")
+            credentials = request.FILES.get("credentials")
+            Tor = request.FILES.get("TOR")
+            pds = request.FILES.get("PDS")
+            f_num = applicant_num
+            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex= sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num)
             facultyApplicantInfo.save()
             return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
-
         except:
-            messages.error(request, 'Fill everything on the form!')
-            return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
-    return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
+            messages.error(request, 'You have already submitted an application')
+            return render(request,'./applicant/applicant_facultyapplicationform.html')
+    return render(request, './applicant/applicant_facultyapplicationform.html')
+
+
 
 def applicant_facultyapplicationform_workexpsheet_submitted(request):
     global f_num, f_mail
