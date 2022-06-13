@@ -1,3 +1,5 @@
+<!--10PM JUNE 8, 2022-->
+<!--ICONS NALANG KULANG-->
 {% load static %}
 
 <!DOCTYPE html>
@@ -12,6 +14,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!--FONTS-->
+<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+
     <!-- Bootstrap CSS --> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -23,6 +30,36 @@
 <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
 <style>
+
+body
+	{
+		background-color: #F3F6FF;
+		overflow-y: auto;
+		height: 1000px;
+		overflow-x:hidden;
+	}
+
+	#backbutton
+	{
+		top:        80px;
+		left:       144px;
+        position:   relative;
+		color: #06529B;
+		
+
+
+	}
+	
+	#roundbg
+	{
+		border-radius: 25px;
+		background: white;
+		width: 1100px;
+		height: 850px;
+		position:relative;
+		top: 100px;
+		left: 120px;
+	}
 
 	body {
 		overflow-x: hidden;
@@ -46,14 +83,14 @@
 
 	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {
-		background: #8f8f8f; 
+		background: #0892DD; 
 	}
 
 	#ContactInformationText, #DepartmentInformationText, #AvailabilityTimeText, #DurationWorkText
 	{
-		font-size: 18px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-size: 20px;
+		font-family: Source Sans Pro;
+		color: #06529B;
 		position:absolute;
 	}
 	#DurationWorkText
@@ -84,15 +121,14 @@
 
 	#LastName, #EmailAddress, #department, #time
 	{
-		width: 240px;
-		height:25px;
+		width: 190px;
+		height: 33px;
 		box-sizing: border-box;
-		border: 2px solid #ECECEC;
-		border-radius: 7px;
-		background-color: #ECECEC;
+		background: #D7DFF6;
+		border: 1px solid #1698DF;
+		border-radius: 4px;
 		color: black;
-		text-indent:10px;
-		font-family: Nunito;
+		font-family: Lato;
         
 	}
 
@@ -119,18 +155,19 @@
 	}
 	#subDepartment
 	{
-		font-size: 12px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-size: 1x;
+		font-family: Lato;
+		color: #06529B;
+;
 		position:absolute;
 		top: 320px;
-		left: 27%;
+		left: 25.5%;
 	}
 	
 	#subEmailAddress
 	{
 		top: 250px;
-		left: 27%;
+		left: 25.5%;
 	}
 
 	/* para nasa ibaba ng lalagyan ng input*/
@@ -138,12 +175,27 @@
 	#subTime
 	{
 		font-size: 12px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-family: Lato;
+		font-style: normal;
+		font-weight: 400;
+		color: #06529B;
 		position:absolute;
-		top: 385px;
-		left: 500px;
+		top: 390px;
+		left: 470px;
+		line-height: 18px;
 	}
+
+	#subLastname, #subDepartment, #subFirstname, #subMiddlename, #subEmailAddress, #subPhone
+	{
+		font-size: 13px;
+		font-family: Lato;
+		line-height: 18px;
+		font-weight: 400;
+		color: #06529B;
+		position:absolute;
+		left: 25.5%;
+	}
+
 	#line2{
 		top: 400px;
 	}
@@ -154,13 +206,148 @@
 		top: 450px;
 	}
 
+/* FROM faculty style CSS */
+
+#FacultyApplicationFormTitle, #UploadDocumentsTitle
+	{
+		font-size:26px;
+		font-family:Lato;
+		font-weight:bold;
+		color: #06529B;
+		position:absolute;
+		
+	}
+
+	#FAFSub, #UDSub
+	{
+
+		font-family: Source Sans Pro;
+		position:absolute;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 28px;
+		color: #06529B;
+	}
+
+	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone, #Time
+	{
+		width: 190px;
+		height: 33px;
+		box-sizing: border-box;
+		border: 1px solid #1698DF;
+		border-radius: 4px;
+		background-color: #D7DFF6;
+		color: black;
+		text-indent:10px;
+		font-family: LAto
+        
+	}
+
+	#CVShape, #CertificateShape, #CredentialsShape, #TORShape, #PDSShape
+	{
+		border: 1px solid #0C66CC;
+		background: #06529B;
+		font-size: 14px;
+		font-family: 'Source Sans Pro';
+		margin-right: 10px;
+		color: white;
+		border-radius: 5px;
+		height: 40px;
+		width: 210px;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		position:absolute;
+		letter-spacing: 0.05em;
+		line-height: 19px;
+		font-weight: 400;
+
+	}
+
+	#CVFile, #CertificateFile, #CredentialsFile, #TORFile, #PDSFile
+	{
+		font-family: 'Source Sans Pro';
+		font-size:14px;
+		background: white;
+		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
+		border-radius:10px;
+	
+	}
+
+	
+		#CVFile, #CertificateFile, #CredentialsFile, #TORFile, #PDSFile {
+		/* No file chosen and choose file shape*/
+		font-family: Lato;
+		font-size:  12px;
+		background: none;
+		border-radius: 10px;
+		filter:drop-shadow(0px 3px 3px rgb(211, 211, 211));
+		height: 60px;
+		width: 300px;	
+		outline: none;
+		position:absolute;
+	}
+
+	#submitbutton
+	{
+		position: absolute;
+		width: 100px;
+		height: 30px;
+		font-family: 'Lato';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		display: flex;
+		align-items: center;
+		border: 1px solid #06529B;
+		text-align: center;
+		color: #FFFFFF;
+		transition: 0.8;
+		transition-duration: 0.4s;
+		background: #06529B;
+		border-radius: 8px;
+		left: 85%;
+		top: calc(50% - 47px/2 + 380px);
+		position: absolute;
+
+	}
+	
+	#submitbutton:hover
+	{
+		
+		background-color: #0892DD;
+		border: 1px solid #0892DD;
+	}
+	
+	#backbutton {
+		position: absolute;
+		top: 50px;
+		width: 100px;
+		height: 20px;
+		font-family: 'Lato';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height:0px;
+		display: flex;
+		align-items: center;
+		border: 15px solid #06529B;
+		text-align: center;
+		color: #FFFFFF;
+		transition: 0.8;
+		transition-duration: 0.4s;
+		background: #06529B;
+		border-radius: 8px;
+	}
+
 </style>
 
 
 </head>
 
 <body>
-	<div id="backbutton"><a href="{% url 'applicant_facultyapplicationform' %}"> <!--templates/Applicants/Faculty--><img src="{% static 'CRS/images/Applicants/Faculty/back.png' %}" alt="iplm" width="35px" height="35px"></a></div>
+	<div id="backbutton"><a href="{% url 'applicant_facultyapplicationform' %}"><button type="text" value="Back" id="backbutton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Back </button> <!--templates/Applicants/Faculty--></a></div>
     
 	<div id="roundbg">
 	<p id="FacultyApplicationFormTitle">Work Experience Sheet</p>
@@ -187,16 +374,16 @@
 			<p id="subTime">Agency/Organization & Location</p>
 		
 		
-	<hr id="line2" color="#d3d3d3" width="980px">
+	<hr id="line2" color="#06529B" width="980px">
 
 	<p id="UploadDocumentsTitle">Upload Documents</p>
 	<p id="UDSub">Please upload the following documents.</p>
             
 	<!--left side-->
 
-	<p id="CVShape">&nbsp;&nbsp;&nbsp;&nbsp;LIST OF ACCOMPLISHMENTS ---& CONTRIBUTIONS</p>
+	<p id="CVShape">&nbsp;&nbsp;&nbsp;&nbsp;LIST OF ACCOMPLISHMENTS &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; & CONTRIBUTIONS</p>
             
-	<p id="CertificateShape"> &nbsp;&nbsp;&nbsp;&nbsp;---SUMMARY OF ACTUAL ------DUTIES</p>
+	<p id="CertificateShape"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; SUMMARY OF ACTUAL  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;DUTIES</p>
 
      <!--Choose file-->
 
@@ -209,7 +396,7 @@
 	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Faculty/clip-1712.png' %}" alt="iplm" width="290px" height="230px"></a></p></picture>
 
 
-	<a href="{% url 'applicant_facultyapplicationform_workexpsheet_submitted' %}"> <button id="submitbutton"> <!--templates/Applicants/Faculty--> Submit </button></a>
+	<a href="{% url 'applicant_facultyapplicationform_workexpsheet_submitted' %}"> <button id="submitbutton"> <!--templates/Applicants/Faculty-->&nbsp;&nbsp;&nbsp;&nbsp; Submit </button></a>
 </form> </div>
 	<script>
 		const types = ["CVFile", "CertificateFile"];

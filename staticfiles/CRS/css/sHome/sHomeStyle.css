@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext");
 
 body {
-    background: #fcfcfc;
-    overflow: hidden;
+    background-color: #f3f6ff;
+    overflow: scroll;
 }
 
 #content {
-    margin-left: 170px;
+    margin-left: 300px;
+    margin-bottom: 200px;
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    background: #fcfcfc;
+    background: #f3f6ff;
 }
 
 
@@ -25,10 +27,10 @@ body {
 
 #sidebar {
     height: 100%;
-    min-width: 175px;
-    max-width: 175px;
-    background: #0C66CC;
-    color: transparent;
+    min-width: 300px;
+    max-width: 400px;
+    background:#f3f6ff;
+    color: #fcfcfc;
     position: fixed;
 }
 
@@ -37,8 +39,9 @@ body {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #0C66CC;
+    padding: 0 20px;
+    display: block;
+    background: #f3f6ff;
     text-align: center;
 }
 
@@ -49,13 +52,16 @@ body {
 #sidebar ul li a {
     padding: 20px;
     display: block;
-    background: #0C66CC;
+    background: #f3f6ff;
+    color:#5F6E83;
+    font: 1em sans-serif;
+    font-weight: bold;
+    font-size: 30px;
     text-align: center;
     padding-bottom: 40px;
 }
 
 #sidebar ul li a:hover {
-    background: #2852a4;
     border-radius: 20px 20px 20px 20px;
     margin-right: 15px;
     margin-left: 15px;
@@ -461,16 +467,16 @@ a:focus {
 .sub-box {
     margin-left: 80px;
 }
-
 .profile-box {
     padding: 30px 30px 30px 80px;
     margin: 0px 80px;
-    border-radius: 40px 40px 40px 40px;
-    box-shadow: 0 0 10px rgb(172, 170, 170);
-    background: #0C66CC;
-    color: white;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
+    color: rgb(0, 0, 0);
     font-size: 14;
 }
+
 
 .phor {
     margin-top: 8px;
@@ -483,8 +489,18 @@ a:focus {
 
 .text-profile {
     margin-top: 50px;
-    font-size: 33px;
-    color: #0C66CC;
+    font-size: 44px;
+    font-weight: 600;
+    color: #06259B;
+    font-family: 'Nunito';
+}
+
+.text-feedback {
+    margin-top: -860px;
+    margin-left: 1000px;
+    font-size: 44px;
+    font-weight: 600;
+    color: #06259B;
     font-family: 'Nunito';
 }
 
@@ -492,14 +508,15 @@ a:focus {
     margin-left: 45px;
     font-size: 20px;
     color: #ffffff;
-    font-family: 'Nunito';
+    font-family: 'Source Sans';
 }
 
 #text-pbox {
     margin-bottom: 0px;
-    font-size: 20px;
-    color: #ffffff;
+    font-size: 24px;
     font-family: 'Nunito';
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 #password-text {
@@ -511,15 +528,15 @@ a:focus {
 #change {
     font-size: 20px;
     color: #ffffff;
-    font-family: 'Nunito';
+    font-family: 'Arial';
 }
 
 #change div:hover {
-    color: #ECC429;
+    color: #4f3f06;
 }
 
 #edit {
-    margin-left: -15px;
+    margin-left: 142px;
 }
 
 .change-spacing {
@@ -536,20 +553,36 @@ a:focus {
     text-align: center;
 }
 
-.profile-border {
-    height: 70px;
-    margin: 0px 100px;
-    border-bottom: solid;
-    border-bottom-width: 3px;
-    border-bottom-color: #ECC429;
-}
+.recieve-feedback-box {
+    margin: 47px 81px;
+    margin-left: 1000px;
+    padding: 557px 27px 0px 0px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 4px 4px rgb(0 0 0 / 25%);
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 14;
+    position: initial;
+    width: 818px;
+    height: 700px;
+    left: -44px;
+    }
 
 .edit-box {
-    margin: 0px 80px;
-    /**guide lang
-    border-radius: 20px 20px 20px 20px; 
-    background-color: pink;**/
-}
+    margin: 47px 81px;
+    padding: 557px 27px 0px 0px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 4px 4px rgb(0 0 0 / 25%);
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 14;
+    position: initial;
+    width: 818px;
+    height: 700px;
+    left: -44px;
+    }
+    /*border-radius: 20px 20px 20px 20px; 
+    background-color: pink;*/
 
 .small-pbox {
     height: 100px;
@@ -724,8 +757,8 @@ a:focus {
 }
 
 #pbuttons .pbtn:hover {
-    background-color: #2852A4;
-    color: #ECC429;
+    background-color: #0892DD;
+    color: #FFFF;
     cursor: pointer;
 }
 

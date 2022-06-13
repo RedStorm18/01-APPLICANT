@@ -1,17 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext");
 
 body {
-    background: #fcfcfc;
-    overflow: hidden;
+    background-color: #f3f6ff;
+    width: auto;
+    height:auto;
+    overflow: scroll; 
+
 }
 
 #content {
-    margin-left: 170px;
+    margin-left: 300px;
+    margin-bottom: 200px;
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    background: #fcfcfc;
+    background: #f3f6ff;
 }
 
 
@@ -25,10 +30,10 @@ body {
 
 #sidebar {
     height: 100%;
-    min-width: 175px;
-    max-width: 175px;
-    background: #0C66CC;
-    color: transparent;
+    min-width: 300px;
+    max-width: 400px;
+    background:#f3f6ff;
+    color: #fcfcfc;
     position: fixed;
 }
 
@@ -37,8 +42,9 @@ body {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #0C66CC;
+    padding: 0 20px;
+    display: block;
+    background: #f3f6ff;
     text-align: center;
 }
 
@@ -49,13 +55,16 @@ body {
 #sidebar ul li a {
     padding: 20px;
     display: block;
-    background: #0C66CC;
+    background: #f3f6ff;
+    color:#5F6E83;
+    font: 1em sans-serif;
+    font-weight: bold;
+    font-size: 30px;
     text-align: center;
     padding-bottom: 40px;
 }
 
 #sidebar ul li a:hover {
-    background: #2852a4;
     border-radius: 20px 20px 20px 20px;
     margin-right: 15px;
     margin-left: 15px;
@@ -94,7 +103,7 @@ a:focus {
     line-height: 15px;
     font-size: 36px;
     color: #D6E000;
-    font-family: 'Nunito';
+    font-family: 'Lato Heavy';
     margin-bottom: -20px;
 }
 
@@ -175,11 +184,11 @@ a:focus {
     color: #ffff;
     width: 100%;
     height: 130px;
-    background-color: #0C66CC;
+    background-color: #06529B;
 }
 
 #buttons .btn:hover {
-    background-color: #2852a4;
+    background-color: #0892DD;
     cursor: pointer
 }
 
@@ -200,7 +209,7 @@ a:focus {
     font-size: 33px;
     color: #0C66CC;
     margin-left: 14px;
-    font-family: 'Nunito'
+    font-family: 'Source Sans Pro'
 }
 
 .col-yellow {
@@ -220,7 +229,7 @@ a:focus {
     height: 40px;
     width: 100%;
     font-size: 30px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: #D6E000;
     margin-bottom: 30px;
     margin-left: -5px;
@@ -234,13 +243,13 @@ a:focus {
 
 .text {
     font-size: 20px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: #0C66CC;
 }
 
 .academicYearHeader{
     font-size: 20px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: white;
     padding-right: 20px;
     padding-top: 50px;
@@ -248,7 +257,7 @@ a:focus {
 
 .academicYearDetail{
     font-size: 20px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: #BADBFF;
     padding-right: 50px;
     padding-top: 50px;
@@ -256,7 +265,7 @@ a:focus {
 
 .semesterHeader{
     font-size: 20px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: white;
     padding-right: 20px;
     padding-top: 10px;
@@ -264,7 +273,7 @@ a:focus {
 
 .semesterDetails{
     font-size: 20px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: #BADBFF;
     padding-right: 50px;
     padding-top: 10px;
@@ -272,7 +281,7 @@ a:focus {
 
 .briefProfileHeader{
     font-size: 22px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: #0C66CC;
     padding-right: 50px;
     padding-bottom: 5px;
@@ -280,7 +289,7 @@ a:focus {
 
 .briefProfileInfo{
     font-size: 22px;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     color: #0C66CC;
 }
 .field {
@@ -367,7 +376,7 @@ a:focus {
 
 #notiftitle {
     color: #0C66CC;
-    font-family: 'Nunito';
+    font-family: 'Lato Heavy';
     margin-left: 40px;
     margin-top: 25px;
     font-size: 20px;
@@ -375,7 +384,7 @@ a:focus {
 
 #notifdrops {
     color: #0C66CC;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     width: 470px;
     height: 100px;
     background-color: white;
@@ -406,25 +415,25 @@ a:focus {
 }
 #notifhead{
     color: #0C66CC;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     font-size: 40px;
 }
 
 #notifhead2{
     margin-top: 50px;
     color: #0C66CC;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     font-size: 30px;
 }
 
 #notifhead3{
     color: #0C66CC;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     font-size: 20px;
 }
 #notiftext{
     color: #aaaaaa;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
     font-size: 18px;
 }
 
@@ -463,14 +472,17 @@ a:focus {
 }
 
 .profile-box {
-    padding: 30px 30px 30px 80px;
+    padding: 20px 30px;
     margin: 0px 80px;
-    border-radius: 40px 40px 40px 40px;
-    box-shadow: 0 0 10px rgb(172, 170, 170);
-    background: #0C66CC;
+    width: 1520px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
     color: white;
     font-size: 14;
+    left: 100px;
 }
+
 
 .phor {
     margin-top: 8px;
@@ -482,24 +494,52 @@ a:focus {
 }
 
 .text-profile {
-    margin-top: 50px;
-    font-size: 33px;
-    color: #0C66CC;
-    font-family: 'Nunito';
+    margin-top: 30px;
+    font-size: 44px;
+    font-weight: 600;
+    color: #06529B;
+    font-family: 'Source Sans Pro';
 }
+
+.text-feedback {
+    margin-top: -860px;
+    margin-left: 1000px;
+    font-size: 44px;
+    font-weight: 600;
+    color: #06529B;
+    font-family: 'Source Sans Pro';
+}
+
+.feedback-box {
+    margin: 47px 81px;
+    margin-left: 1000px;
+    border-radius: 5px 5px 5px 5px;
+    border: #0892DD 3px solid;
+    background: none;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font: Lato;
+    padding:20px; 
+    position: initial;
+    width: 1000px;
+    height: 700px;
+    left: -44px;
+    top: 700px;
+    }
 
 .text-details {
     margin-left: 45px;
     font-size: 20px;
     color: #ffffff;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
 }
 
 #text-pbox {
     margin-bottom: 0px;
-    font-size: 20px;
-    color: #ffffff;
-    font-family: 'Nunito';
+    font-size: 24px;
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 #password-text {
@@ -511,15 +551,15 @@ a:focus {
 #change {
     font-size: 20px;
     color: #ffffff;
-    font-family: 'Nunito';
+    font-family: 'Arial';
 }
 
 #change div:hover {
-    color: #ECC429;
+    color: #4f3f06;
 }
 
 #edit {
-    margin-left: -15px;
+    margin-left: 142px;
 }
 
 .change-spacing {
@@ -536,20 +576,40 @@ a:focus {
     text-align: center;
 }
 
-.profile-border {
-    height: 70px;
-    margin: 0px 100px;
-    border-bottom: solid;
-    border-bottom-width: 3px;
-    border-bottom-color: #ECC429;
+.recieve-feedback-box
+{
+    margin: 47px 81px;
+    margin-left: 1000px;
+    border-radius: 5px 5px 5px 5px;
+    border: #0892DD 3px solid;
+    background: none;
+    color: rgb(2, 2, 2); 
+    font-size: 16px;
+    font: Lato;
+    padding:20px;
+    position: initial;
+    width: 1000px;
+    height: 700px;
+    left: -44px;
+    top: 700px;
+
 }
 
 .edit-box {
-    margin: 0px 80px;
-    /**guide lang
-    border-radius: 20px 20px 20px 20px; 
-    background-color: pink;**/
-}
+    margin: 47px 81px;
+    padding: 557px 27px 0px 0px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 4px 4px rgb(0 0 0 / 25%);
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 14;
+    position: initial;
+    width: 818px;
+    height: 700px;
+    left: -44px;
+    }
+    /*border-radius: 20px 20px 20px 20px; 
+    background-color: pink;*/
 
 .small-pbox {
     height: 100px;
@@ -575,7 +635,7 @@ a:focus {
 }
 
 .col-lg-1 a:hover {
-    background: #2852a4;
+    background: #0892DD;
     border-radius: 10px 10px 10px 10px;
 }
 
@@ -598,7 +658,7 @@ a:focus {
     margin-top: 10px;
     font-size: 40px;
     color: #0C66CC;
-    font-family: 'Nunito';
+    font-family: 'Source Sans Pro';
 }
 
 #backlogo {
@@ -724,8 +784,8 @@ a:focus {
 }
 
 #pbuttons .pbtn:hover {
-    background-color: #2852A4;
-    color: #ECC429;
+    background-color: #0892DD;
+    color: #FFFF;
     cursor: pointer;
 }
 
